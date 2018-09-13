@@ -15,5 +15,10 @@
   "bugs": {
     "url": "https://github.com/averyduffin/equipt/issues"
   },
-  "homepage": "https://github.com/averyduffin/equipt#readme"
+  "homepage": "https://github.com/averyduffin/equipt#readme",
+  "dependencies": {
+    "babel-core": "^6.26.3",
+    "express": "^4.16.3",
+    "prettier": "^1.14.2"
+  }
 }
