@@ -1,0 +1,21 @@
+{
+  "name": "equipt",
+  "version": "1.0.0",
+  "description": "back-end for equipt",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "precommit": "pretty-quick --staged",
+    "pretty": "node ./scripts.js pretty -a"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/averyduffin/equipt.git"
+  },
+  "author": "Avery Duffin",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/averyduffin/equipt/issues"
+  },
+  "homepage": "https://github.com/averyduffin/equipt#readme"
+}
