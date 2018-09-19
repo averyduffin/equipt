@@ -17,6 +17,7 @@
 		"react/prop-types": ["off"],
 		"react/jsx-one-expression-per-line": ["off"],
 
+		"comma-dangle": ["off"],
 		"array-callback-return": ["error"],
 		"block-scoped-var": ["error"],
 		"camelcase": ["error"],
