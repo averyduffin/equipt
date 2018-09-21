@@ -1,16 +1,22 @@
 import React from 'react';
-import logo from './logo.svg';
+import 'bootstrap/dist/css/bootstrap.min.css';
+import { BrowserRouter as Router, Route } from 'react-router-dom';
+import { Provider } from 'react-redux';
+import store from './../store';
+import Nav from './Nav';
+import SubNav from './Nav/SubNav';
+import Landing from './Landing';
 import './App.css';
 
 const App = () => (
 	<div className="App">
-		<header className="App-header">
-			<img src={logo} className="App-logo" alt="logo" />
-			<h1 className="App-title">Welcome to React</h1>
-		</header>
-		<p className="App-intro">
-			To get started, edit <code>src/App.js</code> and save to reload.
-		</p>
+		<Nav />
+		<SubNav />
+		<Router>
+			<Provider store={store}>
+				<Route exact path="/" component={Landing} />
+			</Provider>
+		</Router>
 	</div>
 );
 
