@@ -1,5 +1,6 @@
 import React from 'react';
-import styled, { css } from 'react-emotion';
+import styled from 'react-emotion';
+import { connect } from 'react-redux';
 import {
 	//   Collapse,
 	Navbar,
@@ -11,15 +12,9 @@ import {
 } from 'reactstrap';
 
 import LOGO from './brush.svg';
+import { faceBookLogOut } from '../../store/actions/facebook';
 
-const border = css({
-	backgroundColor: 'hotpink',
-	'&:hover': {
-		color: 'lightgreen',
-	},
-});
-
-export default class Navigation extends React.Component {
+class Navigation extends React.Component {
 	constructor(props) {
 		super(props);
 
@@ -34,9 +29,11 @@ export default class Navigation extends React.Component {
 		});
 	}
 	render() {
+		const { authenticated, photoUrl, signOut } = this.props;
+		console.log(photoUrl);
 		return (
 			<div>
-				<Navbar color="white" className={border} fixed="top" light expand="md">
+				<Navbar color="white" fixed="top" light expand="md">
 					<NavbarBrand href="/">
 						<Logo>
 							<Padding>EQUIPT</Padding>
@@ -47,7 +44,9 @@ export default class Navigation extends React.Component {
 							<NavLink href="/">Post Stuff</NavLink>
 						</NavItem>
 						<NavItem>
-							<NavLink href="/">Login</NavLink>
+							<NavLink href={authenticated ? '/signIn' : '/'} onClick={authenticated ? null : signOut}>
+								{authenticated ? 'Sign out' : 'Login'}
+							</NavLink>
 						</NavItem>
 					</Nav>
 				</Navbar>
@@ -56,6 +55,19 @@ export default class Navigation extends React.Component {
 	}
 }
 
+const mapDispatchToProps = (dispatch) => ({
+	signOut: () => dispatch(faceBookLogOut()),
+});
+
+const mapStateToProps = ({ auth, facebook }) => ({
+	photoUrl: facebook.photo,
+	authenticated: auth.loggedIn,
+});
+
+export default connect(
+	mapStateToProps,
+	mapDispatchToProps
+)(Navigation);
 // 00F0C8
 
 const Logo = styled.div({

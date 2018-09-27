@@ -1,5 +1,6 @@
 import { applyMiddleware } from 'redux';
+import facebookMiddleware from './facebook';
 
-const middleware = [];
+const middleware = [facebookMiddleware];
 
 export default applyMiddleware(...middleware);

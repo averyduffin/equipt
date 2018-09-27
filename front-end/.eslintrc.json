@@ -16,6 +16,8 @@
 		"react/forbid-prop-types": ["off"],
 		"react/prop-types": ["off"],
 		"react/jsx-one-expression-per-line": ["off"],
+		"arrow-parens": ["off"],
+		"jsx-a11y/label-has-for": ["off"],
 
 		"comma-dangle": ["off"],
 		"array-callback-return": ["error"],
