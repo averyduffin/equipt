@@ -1,3 +1,4 @@
+import { withProps } from 'recompose';
 import React from 'react';
 // import { FaFacebookF } from 'react-icons/fa';
 import styled, { css } from 'react-emotion';
@@ -5,6 +6,7 @@ import { connect } from 'react-redux';
 // import GOOGLE_NORMAL from './btn_google_light_normal_ios.svg';
 import LOGO from './brush.svg';
 import { facebookLogin } from '../../store/actions/facebook';
+import './SignIn.css';
 
 const color = css({
 	color: '#00F0C8',
@@ -48,41 +50,64 @@ const color = css({
 // });
 
 const SignIn = ({ logIn }) => (
+	// <Container>
+	// 	<Logo />
+	// 	<form>
+	// 		<div className="form-group">
+	// 			<label htmlFor="exampleInputEmail1">Email address</label>
+	// 			<input
+	// 				type="email"
+	// 				className="form-control"
+	// 				id="exampleInputEmail1"
+	// 				aria-describedby="emailHelp"
+	// 				placeholder="Enter email"
+	// 			/>
+	// 		</div>
+	// 		<div className="form-group">
+	// 			<label htmlFor="exampleInputPassword1">Password</label>
+	// 			<input type="password" className="form-control" id="exampleInputPassword1" placeholder="Password" />
+	// 		</div>
+	// 		<Padding>
+	// 			<button
+	// 				type="submit"
+	// 				className={`btn btn-primary ${color}`}
+	// 				onClick={() => {
+	// 					window.location.assign('/');
+	// 				}}
+	// 			>
+	// 				Start
+	// 			</button>
+	// 		</Padding>
+	// 	</form>
+	// 	<ButtonContainer>
+	// 		<button className={`btn btn-primary ${color}`} onClick={logIn}>
+	// 			{' '}
+	// 			LOGIN FACEBOOK
+	// 		</button>
+	// 	</ButtonContainer>
+	// </Container>
 	<Container>
-		<Logo />
-		<form>
-			<div className="form-group">
-				<label htmlFor="exampleInputEmail1">Email address</label>
-				<input
-					type="email"
-					className="form-control"
-					id="exampleInputEmail1"
-					aria-describedby="emailHelp"
-					placeholder="Enter email"
-				/>
-			</div>
-			<div className="form-group">
-				<label htmlFor="exampleInputPassword1">Password</label>
-				<input type="password" className="form-control" id="exampleInputPassword1" placeholder="Password" />
-			</div>
-			<Padding>
-				<button
-					type="submit"
-					className={`btn btn-primary ${color}`}
-					onClick={() => {
-						window.location.assign('/');
-					}}
-				>
-					Start
-				</button>
-			</Padding>
-		</form>
-		<ButtonContainer>
+		<FormSignIn>
+			<Image />
 			<button className={`btn btn-primary ${color}`} onClick={logIn}>
 				{' '}
 				LOGIN FACEBOOK
 			</button>
-		</ButtonContainer>
+			<Title>Please sign in</Title>
+			<Label>Email address</Label>
+			<Input type="email" id="inputEmail" placeholder="Email address" required />
+			<Label>Password</Label>
+			<Input type="password" id="inputPassword" placeholder="Password" required />
+			<CheckBoxContainer>
+				<label>
+					<Checkbox /> Remember me
+				</label>
+			</CheckBoxContainer>
+			<button className="btn btn-lg btn-primary btn-block" type="submit">
+				Sign in
+			</button>
+			<Copyright>&copy; 2017-2018</Copyright>
+		</FormSignIn>
 	</Container>
 );
 
@@ -98,29 +123,65 @@ export default connect(
 )(SignIn);
 
 const Container = styled.div({
-	backgroundColor: 'white',
-	margin: 'auto',
-	width: 350,
-	// width: '50%',
-	// border: '3px solid green',
-	padding: 10,
-	marginTop: 100,
-	boxShadow: '1px 2px 10px #888888',
+	paddingTop: 100,
+	textAlign: 'center',
 });
 
-const ButtonContainer = styled.div({
-	paddingLeft: 43,
-	paddingBottom: 20,
-});
+const FormSignIn = withProps()(
+	styled.form({
+		width: 300,
+		maxWidth: 330,
+		padding: 15,
+		margin: '0 auto',
+	})
+);
 
-const Logo = styled.div({
-	background: `transparent url(${LOGO}) no-repeat`,
-	backgroundSize: '100px 50px',
-	height: 75,
-	marginLeft: 115,
-});
+const Image = withProps({
+	className: 'mb-4',
+	src: LOGO,
+	alt: '',
+	width: '72',
+	height: '72',
+})(styled.form({}));
+const Title = withProps({ className: 'h3 mb-3 font-weight-normal' })(styled.h1({}));
+const Label = withProps({ className: 'sr-only' })(styled.label({}));
+const Input = withProps({ className: 'form-control' })(
+	styled.input(({ password }) => ({
+		position: 'relative',
+		boxSizing: 'border-box',
+		height: 'auto',
+		padding: 10,
+		fontSize: 16,
+		borderTopLeftRadius: 0,
+		borderTopRightRadius: 0,
+		marginBottom: password ? 10 : -1,
 
-const Padding = styled.div({
-	paddingLeft: 133,
-	paddingBottom: 15,
-});
+		':focus': {
+			zIndex: '2',
+		},
+	}))
+);
+const CheckBoxContainer = withProps({ className: 'mb-3' })(
+	styled.div({
+		fontWeight: '400',
+	})
+);
+const Copyright = withProps({ className: 'mt-5 mb-3 text-muted' })(styled.div({}));
+const Checkbox = withProps({ type: 'checkbox' })(styled.input({}));
+
+// const ButtonContainer = styled.div({
+// 	paddingLeft: 43,
+// 	paddingBottom: 20,
+// });
+
+// const Logo = styled.div({
+// 	background: `transparent url(${LOGO}) no-repeat`,
+// 	backgroundSize: '100px 50px',
+// 	height: 75,
+// 	marginLeft: 115,
+// });
+
+// const Padding = styled.div({
+// 	paddingLeft: 133,
+// 	paddingBottom: 15,
+// });

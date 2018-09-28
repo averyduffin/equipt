@@ -6,11 +6,13 @@ import { Provider } from 'react-redux';
 import store from './../store';
 import registerServiceWorker from '../registerServiceWorker';
 import Main from './Templates/Main';
+import Admin from './Templates/Admin';
 import Blank from './Templates/Blank';
 import Facebook from './Facebook';
 
 import Landing from './Landing';
 import SignIn from './SignIn';
+import User from './User';
 import './App.css';
 
 ReactDOM.render(
@@ -19,6 +21,7 @@ ReactDOM.render(
 			<div>
 				<Facebook />
 				<Route exact path="/" render={(route) => <Main component={Landing} route={route} />} />
+				<Route exact path="/admin" render={(route) => <Admin component={User} route={route} />} />
 				<Route exacat path="/signin" render={(route) => <Blank component={SignIn} route={route} />} />
 			</div>
 		</Router>

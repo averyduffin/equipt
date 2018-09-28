@@ -44,9 +44,21 @@ class Navigation extends React.Component {
 							<NavLink href="/">Post Stuff</NavLink>
 						</NavItem>
 						<NavItem>
-							<NavLink href={authenticated ? '/signIn' : '/'} onClick={authenticated ? null : signOut}>
-								{authenticated ? 'Sign out' : 'Login'}
-							</NavLink>
+							{authenticated && (
+								<ImageContainer>
+									<ProfilePhoto
+										photo={photoUrl}
+										onClick={() => {
+											window.location.assign('/admin');
+										}}
+									/>
+								</ImageContainer>
+							)}
+							{!authenticated && (
+								<NavLink href={authenticated ? '/signIn' : '/'} onClick={authenticated ? null : signOut}>
+									{authenticated ? 'Sign out' : 'Login'}
+								</NavLink>
+							)}
 						</NavItem>
 					</Nav>
 				</Navbar>
@@ -79,4 +91,26 @@ const Logo = styled.div({
 const Padding = styled.div({
 	paddingLeft: 40,
 	color: 'rgba(0,0,0,.5)',
+});
+
+const ProfilePhoto = styled.div(({ photo }) => ({
+	background: `transparent url(${photo}) no-repeat`,
+	backgroundSize: '35px 35px',
+	borderRadius: 'inherit',
+	width: 'inherit',
+	height: 'inherit',
+	display: 'block',
+	position: 'relative',
+	zIndex: '998',
+	cursor: 'pointer',
+}));
+
+const ImageContainer = styled.div({
+	height: 35,
+	width: 35,
+	borderRadius: '50%',
+	boxShadow: 'inset 0 0 0 2px rgba(255,255,255,0.6), 0 1px 1px rgba(0,0,0,0.1)',
+	backgroundColor: 'transparent !important',
+	marginLeft: 18,
+	zIndex: '999',
 });
