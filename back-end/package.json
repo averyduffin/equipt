@@ -1,24 +1,25 @@
 {
-  "name": "equipt",
-  "version": "1.0.0",
-  "description": "back-end for equipt",
-  "main": "index.js",
-  "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
-  },
-  "repository": {
-    "type": "git",
-    "url": "git+https://github.com/averyduffin/equipt.git"
-  },
-  "author": "Avery Duffin",
-  "license": "ISC",
-  "bugs": {
-    "url": "https://github.com/averyduffin/equipt/issues"
-  },
-  "homepage": "https://github.com/averyduffin/equipt#readme",
-  "dependencies": {
-    "babel-core": "^6.26.3",
-    "express": "^4.16.3",
-    "prettier": "^1.14.2"
-  }
+	"name": "equipt",
+	"version": "1.0.0",
+	"description": "back-end for equipt",
+	"main": "index.js",
+	"scripts": {
+		"test": "echo \"Error: no test specified\" && exit 1"
+	},
+	"repository": {
+		"type": "git",
+		"url": "git+https://github.com/averyduffin/equipt.git"
+	},
+	"author": "Avery Duffin",
+	"license": "ISC",
+	"bugs": {
+		"url": "https://github.com/averyduffin/equipt/issues"
+	},
+	"homepage": "https://github.com/averyduffin/equipt#readme",
+	"dependencies": {
+		"babel-core": "^6.26.3",
+		"express": "^4.16.3",
+		"mongoose": "^5.3.0",
+		"prettier": "^1.14.2"
+	}
 }
